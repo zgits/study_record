@@ -6,7 +6,11 @@
 
     <groupId>org.study</groupId>
     <artifactId>study_record</artifactId>
+    <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>RabbitMQ_study</module>
+    </modules>
 
 
 </project>
