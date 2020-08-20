@@ -12,7 +12,10 @@ public class Send {
 
     protected static final String QUEUE_NAME = "directQueue";
 
-    protected static final String ROUTE_KEY = "directRoutekey";
+    protected static final String ROUTE_KEY1 = "directRoutekey.add";
+    protected static final String ROUTE_KEY2 = "directRoutekey.delete";
+
+
 
     public static void main(String[] args) throws IOException, TimeoutException {
         ConnectionFactory factory = new ConnectionFactory();
@@ -23,13 +26,16 @@ public class Send {
         // 交换机声明
         channel.exchangeDeclare(EXCHANGE_NAME, BuiltinExchangeType.DIRECT, true, false, null);
 
-        channel.queueDeclare(QUEUE_NAME,true,false,false,null);
+        channel.queueDeclare(QUEUE_NAME, true, false, false, null);
 
-        channel.basicPublish(EXCHANGE_NAME,ROUTE_KEY, MessageProperties.PERSISTENT_TEXT_PLAIN,"direct_message".getBytes());
+        channel.queueBind(QUEUE_NAME, EXCHANGE_NAME, ROUTE_KEY1);
 
+        channel.basicPublish(EXCHANGE_NAME, ROUTE_KEY2, MessageProperties.PERSISTENT_TEXT_PLAIN, "direct_message_delete".getBytes());
 
-        connection.close();
+        System.out.println("发送消息");
 
         channel.close();
+        connection.close();
+
     }
 }
