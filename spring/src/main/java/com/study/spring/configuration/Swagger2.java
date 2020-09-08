@@ -22,14 +22,21 @@ public class Swagger2 {
         return new Docket(DocumentationType.SWAGGER_2)
                 //apiInfo： 添加api详情信息，参数为ApiInfo类型的参数，这个参数包含了第二部分的所有信息比如标题、描述、版本之类的，开发中一般都会自定义这些信息
                 .apiInfo(apiInfo())
-                //配置是否启用Swagger，如果是false，在浏览器将无法访问，默认是true
                 .enable(true)
                 .select()
-                //apis： 添加过滤条件,
-                .apis(RequestHandlerSelectors.basePackage("com.study.spring.controller"))
-                //paths： 这里是控制哪些路径的api会被显示出来，比如下方的参数就是除了/user以外的其它路径都会生成api文档
+                //为当前包下controller生成API文档
+//                .apis(RequestHandlerSelectors.basePackage("com.troila"))
+                //为有@Api注解的Controller生成API文档
+//                .apis(RequestHandlerSelectors.withClassAnnotation(Api.class))
+                //为有@ApiOperation注解的方法生成API文档
+//                .apis(RequestHandlerSelectors.withMethodAnnotation(ApiOperation.class))
+                //为任何接口生成API文档
+                .apis(RequestHandlerSelectors.any())
                 .paths(PathSelectors.any())
                 .build();
+        //添加登录认证
+                /*.securitySchemes(securitySchemes())
+                .securityContexts(securityContexts());*/
     }
 
     private ApiInfo apiInfo(){
@@ -39,4 +46,30 @@ public class Swagger2 {
                 .version("1.0")
                 .build();
     }
+
+    /**
+     * 给API文档接口添加安全认证
+     */
+    /*private List<ApiKey> securitySchemes() {
+        List<ApiKey> apiKeys = new ArrayList<>();
+        apiKeys.add(new ApiKey("Authorization", "Authorization", "header"));
+        return apiKeys;
+    }
+
+    private List<SecurityContext> securityContexts() {
+        List<SecurityContext> securityContexts = new ArrayList<>();
+        securityContexts.add(SecurityContext.builder()
+                .securityReferences(defaultAuth())
+                .forPaths(PathSelectors.regex("^(?!auth).*$")).build());
+        return securityContexts;
+    }
+
+    private List<SecurityReference> defaultAuth() {
+        AuthorizationScope authorizationScope = new AuthorizationScope("global", "accessEverything");
+        AuthorizationScope[] authorizationScopes = new AuthorizationScope[1];
+        authorizationScopes[0] = authorizationScope;
+        List<SecurityReference> securityReferences = new ArrayList<>();
+        securityReferences.add(new SecurityReference("Authorization", authorizationScopes));
+        return securityReferences;
+    }*/
 }
