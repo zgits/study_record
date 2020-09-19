@@ -96,6 +96,27 @@
             <version>4.7.2</version>
         </dependency>
 
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.69</version>
+        </dependency>
+
+
+
+        <!-- https://mvnrepository.com/artifact/com.parkingwang/okhttp3-loginterceptor -->
+        <dependency>
+            <groupId>com.parkingwang</groupId>
+            <artifactId>okhttp3-loginterceptor</artifactId>
+            <version>0.5</version>
+        </dependency>
+
+
+<!--        <dependency>-->
+<!--            <groupId>com.squareup.okhttp3</groupId>-->
+<!--            <artifactId>logging-interceptor</artifactId>-->
+<!--            <version>3.7.0</version>-->
+<!--        </dependency>-->
 
         <!-- https://mvnrepository.com/artifact/io.springfox/springfox-swagger2 -->
         <dependency>
