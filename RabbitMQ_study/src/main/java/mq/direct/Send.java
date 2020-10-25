@@ -19,18 +19,17 @@ public class Send {
 
     public static void main(String[] args) throws IOException, TimeoutException {
         ConnectionFactory factory = new ConnectionFactory();
+        factory.setVirtualHost("/study");
         Connection connection = factory.newConnection();
 
         Channel channel = connection.createChannel();
 
         // 交换机声明
-        channel.exchangeDeclare(EXCHANGE_NAME, BuiltinExchangeType.DIRECT, true, false, null);
+        channel.exchangeDeclare(EXCHANGE_NAME, BuiltinExchangeType.DIRECT);
 
-        channel.queueDeclare(QUEUE_NAME, true, false, false, null);
 
-        channel.queueBind(QUEUE_NAME, EXCHANGE_NAME, ROUTE_KEY1);
-
-        channel.basicPublish(EXCHANGE_NAME, ROUTE_KEY2, MessageProperties.PERSISTENT_TEXT_PLAIN, "direct_message_delete".getBytes());
+        channel.basicPublish(EXCHANGE_NAME, ROUTE_KEY2, null, "direct_message_delete".getBytes());
+        channel.basicPublish(EXCHANGE_NAME, ROUTE_KEY1, null, "direct_message_add".getBytes());
 
         System.out.println("发送消息");
 

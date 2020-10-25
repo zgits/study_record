@@ -22,15 +22,18 @@ public class Recv {
         channel.queueDeclare(QUEUE_NAME,false, false, false, null);
         System.out.println("wait");
 
+
         //创建消费者
         Consumer consumer = new DefaultConsumer(channel) {
+
+            
             @Override
             public void handleDelivery(String consumerTag, Envelope envelope, AMQP.BasicProperties properties, byte[] body) throws IOException {
                 String message = new String(body, "UTF-8");
                 System.out.println("receive"+message);
             }
         };
-        channel.basicConsume(QUEUE_NAME,consumer);
+        channel.basicConsume(QUEUE_NAME,true,consumer);
 
 
     }
