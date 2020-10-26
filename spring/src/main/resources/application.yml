@@ -7,3 +7,11 @@ spring:
   logging:
     level:
       root:info
+  application:
+    name: rabbit-mq
+  rabbitmq:
+    host: 127.0.0.1
+    username: guest
+    password: guest
+    virtual-host: /study
+    port: 5672
