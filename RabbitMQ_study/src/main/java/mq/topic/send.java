@@ -23,14 +23,14 @@ public class send {
     public static void main(String[] args) throws IOException, TimeoutException {
         ConnectionFactory connectionFactory = new ConnectionFactory();
 
+        connectionFactory.setVirtualHost("/study");
+
         Connection connection = connectionFactory.newConnection();
 
         Channel channel = connection.createChannel();
 
-        channel.queueDeclare(QUEUE_NAME, false, false,false, null);
-
-
         channel.exchangeDeclare(EXCHANGE_NAME, BuiltinExchangeType.TOPIC);
+
 
         String message1 = "add message";
         String message2 = "delete message";
@@ -40,7 +40,7 @@ public class send {
 
         channel.basicPublish(EXCHANGE_NAME,ROUTE_KEY2,null,message2.getBytes());
         channel.basicPublish(EXCHANGE_NAME,ROUTE_KEY3,null,message3.getBytes());
-        channel.basicPublish(EXCHANGE_NAME,"topickey.test",null,"test".getBytes());
+        channel.basicPublish(EXCHANGE_NAME,"topickey.test.all",null,"test".getBytes());
 
         channel.close();
         connection.close();

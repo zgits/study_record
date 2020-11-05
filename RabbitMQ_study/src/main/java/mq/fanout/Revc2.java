@@ -3,15 +3,14 @@ package mq.fanout;
 import com.rabbitmq.client.*;
 
 import java.io.IOException;
-import java.util.Queue;
 import java.util.concurrent.TimeoutException;
 
-public class Revc {
+public class Revc2 {
 
 
     private static final String EXCHANGE_NAME = "fanoutExchangeName";
 
-    public static final String QUEUE_NAME = "fanoutQueueName";
+    public static final String QUEUE_NAME = "fanoutQueueName1";
 
 
     public static void main(String[] args) throws IOException, TimeoutException {
@@ -26,8 +25,7 @@ public class Revc {
 
 
         // 绑定通道到交换机
-//        channel.exchangeDeclare(EXCHANGE_NAME, BuiltinExchangeType.FANOUT);
-
+        channel.exchangeDeclare(EXCHANGE_NAME, BuiltinExchangeType.FANOUT);
 
         // 声明队列
         channel.queueDeclare(QUEUE_NAME, false, false, false, null);

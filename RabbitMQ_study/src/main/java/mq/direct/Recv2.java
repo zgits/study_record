@@ -5,13 +5,13 @@ import com.rabbitmq.client.*;
 import java.io.IOException;
 import java.util.concurrent.TimeoutException;
 
-public class Recv {
+public class Recv2 {
 
     protected static final String EXCHANGE_NAME = "directExchange";
 
-    protected static final String QUEUE_NAME = "directQueue1";
+    protected static final String QUEUE_NAME = "directQueue2";
 
-    protected static final String ROUTE_KEY = "directRoutekey.delete";
+    protected static final String ROUTE_KEY = "directRoutekey.add";
 
     public static void main(String[] args) throws IOException, TimeoutException {
         ConnectionFactory factory = new ConnectionFactory();
@@ -24,12 +24,12 @@ public class Recv {
 
 //        channel.exchangeDeclare(EXCHANGE_NAME, BuiltinExchangeType.DIRECT);
 
+
         //声明队列
         channel.queueDeclare(QUEUE_NAME, true, false, false, null);
 
         //队列与交换机绑定(参数为：队列名称；交换机名称；密钥-routeKey)
         channel.queueBind(QUEUE_NAME, EXCHANGE_NAME, ROUTE_KEY);
-        channel.queueBind(QUEUE_NAME, EXCHANGE_NAME, "directRoutekey.add");
 
 
         DefaultConsumer consumer = new DefaultConsumer(channel){
