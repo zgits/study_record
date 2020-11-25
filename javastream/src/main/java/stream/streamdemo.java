@@ -11,7 +11,16 @@ public class streamdemo {
             list.add(i);
         }
 
+        MathOperation mathOperation =  (int a,int b)->{ return a * b;};
+
         long count = list.stream().filter(number -> number>50).count();
         System.out.println(count);
     }
+
+
+    interface MathOperation {
+        int operation(int a, int b);
+    }
+
+
 }
