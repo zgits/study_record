@@ -1,6 +1,7 @@
 package com.study.spring.anthorTest;
 
 import com.study.spring.ApplicationTests;
+import okhttp3.OkHttpClient;
 import okhttp3.Response;
 import org.junit.jupiter.api.Test;
 
