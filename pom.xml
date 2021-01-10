@@ -11,6 +11,7 @@
     <modules>
         <module>RabbitMQ_study</module>
         <module>javastream</module>
+        <module>other</module>
     </modules>
 
 
