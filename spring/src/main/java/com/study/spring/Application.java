@@ -4,6 +4,7 @@ import org.springframework.boot.Banner;
 import org.springframework.boot.ResourceBanner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.AnnotationBeanNameGenerator;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.core.annotation.Order;
@@ -20,19 +21,20 @@ import java.io.PrintStream;
  */
 
 @SpringBootApplication
+@EnableCaching
 @ComponentScan(nameGenerator = AnnotationBeanNameGenerator.class)
 public class Application {
 
     public static void main(String[] args) {
 
 
-        SpringApplication springApplication = new SpringApplication(Application.class);
-        springApplication.setBanner(new ResourceBanner(new ClassPathResource("banner.txt")));
-
-        springApplication.setBannerMode(Banner.Mode.CONSOLE);
-        springApplication.run(args);
+//        SpringApplication springApplication = new SpringApplication(Application.class);
+//        springApplication.setBanner(new ResourceBanner(new ClassPathResource("banner.txt")));
 //
-//        SpringApplication.run(Application.class, args);
+//        springApplication.setBannerMode(Banner.Mode.CONSOLE);
+//        springApplication.run(args);
+//
+        SpringApplication.run(Application.class, args);
     }
 
 }
