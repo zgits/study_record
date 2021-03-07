@@ -15,3 +15,8 @@ spring:
     password: guest
     virtual-host: /study
     port: 5672
+logging:
+  level:
+    com.study.spring.utils.OkHttp:
+     error
+  config: classpath:logback-spring.xml

@@ -8,7 +8,21 @@ import java.io.IOException;
 public class OkHttp {
 
 
-    private final static Logger logger = LoggerFactory.getLogger(OkHttp.class);
+    private static final Logger logger = LoggerFactory.getLogger(OkHttp.class);
+
+
+
+
+    public static void test(){
+        logger.trace("这是trace日志");
+        logger.debug("这是debug信息");
+        logger.info("这是info信息");
+        /**
+         * 运行后,从info信息开始输出,说明Springboot默认是info级别的日志信息
+         */
+        logger.warn("这是warning信息");
+        logger.error("这是error信息");
+    }
 
     public static void main(String[] args) throws IOException {
 
@@ -37,5 +51,17 @@ public class OkHttp {
 //                .build();
 //
 //        Response response = okHttpClient.newCall(request).execute();
+        /**
+         * 日志级别,由低到高
+         * 我们可以调整日志级别,日志就只会在这个级别以后生效
+         */
+        logger.trace("这是trace日志");
+        logger.debug("这是debug信息");
+        logger.info("这是info信息");
+        /**
+         * 运行后,从info信息开始输出,说明Springboot默认是info级别的日志信息
+         */
+        logger.warn("这是warning信息");
+        logger.error("这是error信息");
     }
 }
