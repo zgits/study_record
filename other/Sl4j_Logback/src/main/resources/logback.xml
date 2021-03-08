@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!--日志配置-->
+<configuration scan="true" scanPeriod="5" debug="true">
+    <!--直接定义属性-->
+    <property name="logFile" value="logs/logback"/>
+    <property name="color"
+              value="%red(%date{yyyy-MM-dd HH:mm:ss}) %highlight(%-5level) %red([%thread]) %boldMagenta(%logger{50}) %cyan(%msg%n)"/>
+    <!--通过配置文件定义属性-->
+<!--    <springProperty name="" source=""/>-->
+
+    <!--定义并描述一个日志的输出属性-->
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+
+        <encoder>
+            <pattern>${color}</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+
+    </appender>
+
+
+
+    <appender name="FILE" class="ch.qos.logback.core.FileAppender">
+        <file>${logFile}/testFile.log</file>
+        <append>true</append>
+        <encoder>
+            <pattern>%d [%thread] %-5level %logger{50} -[%file:%line]- %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!--创建一个具体的日志输出-->
+    <logger name="Logback.LogbackLow" level="warn" additivity="false">
+        <appender-ref ref="console"/>
+    </logger>
+
+    <!--基础的日志输出-->
+    <root level="info">
+        <appender-ref ref="console"/>
+        <appender-ref ref="FILE"/>
+    </root>
+</configuration>
