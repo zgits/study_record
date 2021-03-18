@@ -19,6 +19,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api")
@@ -76,4 +79,26 @@ public class ApiController {
 
     }
 
+
+    /**
+     * 手动抛出OOM异常可调整参数：-Xmx28m -Xms28m -Xmn10m -Xss1m -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=C:\Users\KiroLox\Desktop\main.bin
+     */
+    @GetMapping("/test")
+    public static void test(){
+        List<LogInterceptor> oom = new ArrayList<>();
+        while (true) {
+            oom.add(new LogInterceptor());
+        }
+
+    }
+
+
+
+    public static void main(String[] args) {
+        test();
+    }
+
 }
+
+
+

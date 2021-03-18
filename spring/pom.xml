@@ -137,7 +137,7 @@
 <!--        </dependency>-->
 
         <!--api文档-->
-        <!-- https://mvnrepository.com/artifact/io.springfox/springfox-swagger2 -->
+<!--         https://mvnrepository.com/artifact/io.springfox/springfox-swagger2 -->
         <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger2</artifactId>
@@ -178,11 +178,11 @@
 
 
         <!--ui界面更好的swagger-->
-        <dependency>
-            <groupId>com.github.xiaoymin</groupId>
-            <artifactId>knife4j-spring-boot-starter</artifactId>
-            <version>3.0.2</version>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>com.github.xiaoymin</groupId>-->
+<!--            <artifactId>knife4j-spring-boot-starter</artifactId>-->
+<!--            <version>3.0.2</version>-->
+<!--        </dependency>-->
     </dependencies>
 
     <build>
