@@ -12,6 +12,7 @@
         <module>RabbitMQ_study</module>
         <module>other</module>
         <module>java_base</module>
+        <module>spring_cloud</module>
     </modules>
 
 
