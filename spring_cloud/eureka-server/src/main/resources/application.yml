@@ -1,12 +1,19 @@
-# ·şÎñ×¢²áÖĞĞÄ (µ¥½Úµã)
+# æœåŠ¡æ³¨å†Œä¸­å¿ƒ (å•èŠ‚ç‚¹)
 server:
   port: 8761
 eureka:
   instance:
     hostname: localhost
   client:
-    fetch-registry: false # ±íÊ¾ÊÇ·ñ´ÓEureka Server»ñÈ¡×¢²áĞÅÏ¢,Ä¬ÈÏÎªtrue.ÒòÎªÕâÊÇÒ»¸öµ¥µãµÄEureka Server,²»ĞèÒªÍ¬²½ÆäËûµÄEureka Server½ÚµãµÄÊı¾İ,ÕâÀïÉèÖÃÎªfalse
-    register-with-eureka: false # ±íÊ¾ÊÇ·ñ½«×Ô¼º×¢²áµ½Eureka Server,Ä¬ÈÏÎªtrue.ÓÉÓÚµ±Ç°Ó¦ÓÃ¾ÍÊÇEureka Server,¹Ê¶øÉèÖÃÎªfalse.
+    fetch-registry: false # è¡¨ç¤ºæ˜¯å¦ä»Eureka Serverè·å–æ³¨å†Œä¿¡æ¯,é»˜è®¤ä¸ºtrue.å› ä¸ºè¿™æ˜¯ä¸€ä¸ªå•ç‚¹çš„Eureka Server,ä¸éœ€è¦åŒæ­¥å…¶ä»–çš„Eureka ServerèŠ‚ç‚¹çš„æ•°æ®,è¿™é‡Œè®¾ç½®ä¸ºfalse
+    register-with-eureka: false # è¡¨ç¤ºæ˜¯å¦å°†è‡ªå·±æ³¨å†Œåˆ°Eureka Server,é»˜è®¤ä¸ºtrue.ç”±äºå½“å‰åº”ç”¨å°±æ˜¯Eureka Server,æ•…è€Œè®¾ç½®ä¸ºfalse.
     service-url:
-      # ÉèÖÃÓëEureka ServerµÄµØÖ·,²éÑ¯·şÎñºÍ×¢²á·şÎñ¶¼ĞèÒªÒÀÀµÕâ¸öµØÖ·.Ä¬ÈÏÊÇhttp://localhost:8761/eureka/;¶à¸öµØÖ·¿ÉÊ¹ÓÃ','·ç¸ñ.
+      # è®¾ç½®ä¸Eureka Serverçš„åœ°å€,æŸ¥è¯¢æœåŠ¡å’Œæ³¨å†ŒæœåŠ¡éƒ½éœ€è¦ä¾èµ–è¿™ä¸ªåœ°å€.é»˜è®¤æ˜¯http://localhost:8761/eureka/;å¤šä¸ªåœ°å€å¯ä½¿ç”¨','é£æ ¼.
       defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+  server:
+    enable-self-preservation: false  # å…³é—­è‡ªæˆ‘ä¿æŠ¤æ¨¡å¼
+spring:
+  security:
+    user:
+      name: admin
+      password: 123456
