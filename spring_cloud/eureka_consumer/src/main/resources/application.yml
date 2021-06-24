@@ -5,6 +5,12 @@ spring:
   application:
     name: eureka-consumer
 
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"   # * 在yaml 文件属于关键字，所以需要加引号
+
 eurekas:
   user: admin
   password: 123456
@@ -13,3 +19,10 @@ eureka:
   client:
     service-url:
       defaultZone: http://${eurekas.user}:${eurekas.password}@localhost:8761/eureka # 指定服务注册中心
+    healthcheck:
+      enabled: true  # 用于开启健康检查
+  instance:
+    instance-id: ${spring.application.name}:${spring.cloud.client.ip-address}:${server.port}
+    prefer-ip-address: true
+    lease-expiration-duration-in-seconds: 5 #表示 Eureka Server 至上一次收到 client 的心跳之后，等待下一次心跳的超时时间，在这个时间内若没收到下一次心跳，则移除该 Instance。
+    lease-renewal-interval-in-seconds: 5 #表示 Eureka Client 发送心跳给 server 端的频率
