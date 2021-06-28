@@ -23,8 +23,9 @@ public class EurekaProducerApplication {
 
 
     @RequestMapping("sayHello")
-    public String sayHello() {
+    public String sayHello(String param) {
         System.out.println(environment.getProperty("local.server.port"));
-        return "hello";
+        
+        return "hello" + param;
     }
 }
