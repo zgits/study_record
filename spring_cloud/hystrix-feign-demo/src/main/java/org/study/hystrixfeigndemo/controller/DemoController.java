@@ -22,7 +22,7 @@ public class DemoController {
     @GetMapping("/callHello")
     @HystrixCommand(fallbackMethod = "defaultCallHello")
     public String callHello() {
-        String result = restTemplate.getForObject("http://localhost:8088/house/hello", String.class);
+        String result = restTemplate.getForObject("http://localhost:8768/sayHello", String.class);
         return result;
     }
 
