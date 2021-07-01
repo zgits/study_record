@@ -1,9 +1,9 @@
 server:
-  port: 8763
+  port: 8777
 
 spring:
   application:
-    name: eureka-consumer
+    name: feign-consumer
 
 management:
   endpoints:
@@ -14,7 +14,6 @@ management:
 eurekas:
   user: admin
   password: 123456
-  producername: EUREKA-PRODUCER
 
 eureka:
   client:
@@ -27,3 +26,7 @@ eureka:
     prefer-ip-address: true
     lease-expiration-duration-in-seconds: 5 #表示 Eureka Server 至上一次收到 client 的心跳之后，等待下一次心跳的超时时间，在这个时间内若没收到下一次心跳，则移除该 Instance。
     lease-renewal-interval-in-seconds: 5 #表示 Eureka Client 发送心跳给 server 端的频率
+
+logging:
+  level:
+    org.study.feigndemo.client: DEBUG
