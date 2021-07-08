@@ -2,7 +2,7 @@ management:
   endpoints:
     web:
       exposure:
-        include: "*"   # * 在yaml 文件属于关键字，所以需要加引号
+        include: "*"   # * 鍦▂aml 鏂囦欢灞炰簬鍏抽敭瀛楋紝鎵�浠ラ渶瑕佸姞寮曞彿
 
 spring:
   application:
@@ -10,3 +10,15 @@ spring:
 hystrix:
   dashboard:
     proxy-stream-allow-list: localhost
+
+eurekas:
+  user: admin
+  password: 123456
+eureka:
+  client:
+    service-url:
+      defaultZone: http://${eurekas.user}:${eurekas.password}@localhost:8761/eureka # 鎸囧畾鏈嶅姟娉ㄥ唽涓績
+
+turbine:
+  aggregator:
+    clusterConfig锛歍urbine
