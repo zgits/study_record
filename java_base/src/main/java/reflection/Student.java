@@ -21,6 +21,11 @@ public class Student {
         this.age = age;
     }
 
+
+    public void getAge() {
+
+    }
+
     private String show(String message) {
         System.out.println(message);
         return "show message";
