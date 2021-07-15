@@ -3,33 +3,41 @@ package reflection;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
+/**
+ * @author
+ * @date 2021年07月12日 20:59
+ * @description
+ */
 public class TestSpeed {
 
 
-    public static void test01(){
 
+    public static void test01() {
         long startTime = System.currentTimeMillis();
-
         Student student = new Student();
         for (int i = 0; i < 1000000000; i++) {
             student.getAge();
         }
         long endTime = System.currentTimeMillis();
-        System.out.println("普通10亿" + (endTime - startTime));
+        System.out.println("普通时间:" + (endTime - startTime));
     }
 
-    public static void test02() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+
+
+
+    public static void test02() throws InvocationTargetException, IllegalAccessException, NoSuchMethodException {
         long startTime = System.currentTimeMillis();
 
         Student student = new Student();
-        Class c1 = student.getClass();
-        Method method = c1.getDeclaredMethod("getAge", null);
+        Method method = student.getClass().getDeclaredMethod("getAge", null);
+        method.setAccessible(true);
         for (int i = 0; i < 1000000000; i++) {
             method.invoke(student, null);
         }
         long endTime = System.currentTimeMillis();
-        System.out.println("安全检查10亿" + (endTime - startTime));
+        System.out.println("普通时间:" + (endTime - startTime));
     }
+
 
 
 
@@ -37,20 +45,17 @@ public class TestSpeed {
         long startTime = System.currentTimeMillis();
 
         Student student = new Student();
-        Class c1 = student.getClass();
-        Method method = c1.getDeclaredMethod("getAge", null);
-        method.setAccessible(true);
+        Method method =  student.getClass().getDeclaredMethod("getAge", null);
         for (int i = 0; i < 1000000000; i++) {
             method.invoke(student, null);
         }
         long endTime = System.currentTimeMillis();
-        System.out.println("非安全检查10亿" + (endTime - startTime));
+        System.out.println("普通时间:" + (endTime - startTime));
     }
 
-    public static void main(String[] args) throws InvocationTargetException, NoSuchMethodException, IllegalAccessException {
+    public static void main(String[] args) throws IllegalAccessException, NoSuchMethodException, InvocationTargetException {
         test01();
         test02();
         test03();
     }
-
 }

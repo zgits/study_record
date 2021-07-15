@@ -22,8 +22,8 @@ public class Student {
     }
 
 
-    public int getAge() {
-        return age;
+    public void getAge() {
+
     }
 
     private String show(String message) {
