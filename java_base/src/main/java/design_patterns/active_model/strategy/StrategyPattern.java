@@ -1,12 +1,6 @@
 package design_patterns.active_model.strategy;
 
-/**
- * @author
- * @date 2021年07月18日 10:35
- * @description
- */
 public class StrategyPattern {
-
 
     public static void main(String[] args) {
         Context c = new Context();
@@ -21,36 +15,38 @@ public class StrategyPattern {
 }
 
 
-interface Strategy{
-    public void strategyMethod();// 策略方法
+interface Strategy {
+    void StrategyMethod();// 策略方法
 }
 
-
-//具体策略类A
 class ConcreteStrategyA implements Strategy {
+
     @Override
-    public void strategyMethod() {
-        System.out.println("具体策略A的策略方法被访问！");
+    public void StrategyMethod() {
+        System.out.println("策略A方法访问到");
     }
 }
-//具体策略类B
+
 class ConcreteStrategyB implements Strategy {
+
     @Override
-    public void strategyMethod() {
-        System.out.println("具体策略B的策略方法被访问！");
+    public void StrategyMethod() {
+        System.out.println("策略B方法访问到");
     }
 }
 
-
-class Context{
+class Context {
     private Strategy strategy;
+
     public Strategy getStrategy() {
         return strategy;
     }
+
     public void setStrategy(Strategy strategy) {
         this.strategy = strategy;
     }
-    public void strategyMethod() {
-        strategy.strategyMethod();
+
+    public void strategyMethod(){
+        strategy.StrategyMethod();
     }
 }
