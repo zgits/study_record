@@ -1,5 +1,9 @@
 package thread;
 
+import sun.misc.Unsafe;
+
+import java.util.concurrent.locks.Condition;
+import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
 /**
@@ -10,7 +14,12 @@ import java.util.concurrent.locks.ReentrantLock;
 public class ReentrantLockExample {
 
     int a = 0;
-    ReentrantLock lock = new ReentrantLock();
+    private Lock lock = new ReentrantLock();
+
+    private Condition condition = lock.newCondition();
+
+    Unsafe unsafe = Unsafe.getUnsafe();
+
 
     public void writer(){
         lock.lock();

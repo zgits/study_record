@@ -1,5 +1,10 @@
 package keyword;
 
+import java.util.Collection;
+import java.util.Collections;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.atomic.AtomicStampedReference;
+
 /**
  * @author
  * @date 2021年08月08日 10:15
@@ -90,6 +95,20 @@ public class static_example {
     public static void main(String[] args) {
         static_example a = new static_example();
         static_example b = new static_example();
+
+
+        int i = 0;
+        i = ++i;
+        System.out.println(i);
+
+
+        AtomicInteger atomicInteger = new AtomicInteger();
+        atomicInteger.incrementAndGet();
+
+        AtomicStampedReference<Integer> atomicStampedReference = new AtomicStampedReference(i,0);
+
+        ThreadLocal threadLocal = new ThreadLocal();
+        threadLocal.set("12");
     }
 
 }
