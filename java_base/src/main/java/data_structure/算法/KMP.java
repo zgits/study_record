@@ -13,16 +13,14 @@ public class KMP {
         int j = 0;
         int[] next = pst(target);
         while (i < source.length() && j < target.length()) {
-            if (j == -1 || source.charAt(i) == target.charAt(j)) {
-                i++;
-                j++;
-            } else {
-                //next[j]是j位公共前缀，下次移动直接移动时，next[j]位前面的一定是相同的，直接从j开始比较即可
-                //j移动到next[j]=4，【因为[0~3]的4个字符是因为公共前后缀，所以j下次从[4]开始】
-                j = next[j];
+            while (j > 0 && source.charAt(i) != target.charAt(j)) {
+                j = next[j - 1];
             }
+            if (source.charAt(i) == target.charAt(j)) {
+                j++;
+            }
+            i++;
         }
-
         if (j == target.length()) {
             return i - j;
         } else {
@@ -33,17 +31,16 @@ public class KMP {
 
     int[] pst(String str) {
         int[] next = new int[str.length()];
-        int i = 0, j = -1;
-        next[0] = -1;
-        while (i < str.length() - 1) {
-            // 错开一位匹配，刚好就是匹配前缀和后缀
-            if (j == -1 || str.charAt(i) == str.charAt(j)) {
-                ++j;
-                ++i;
-                next[i] = j;
-            } else {
-                j = next[j];
+        int j = 0;
+        for (int i = 1; i < str.length(); i++) {
+            while (j > 0 && str.charAt(j) != str.charAt(i)) {
+                j = next[j - 1];
             }
+
+            if (str.charAt(j) == str.charAt(i)) {
+                j++;
+            }
+            next[i] = j;
         }
         return next;
     }
@@ -51,7 +48,7 @@ public class KMP {
 
     public static void main(String[] args) {
         KMP kmp = new KMP();
-        System.out.println(kmp.KMP("cdacdd", "abababababab"));
+        System.out.println(kmp.KMP("cdacdd", "ababa111bcdacddababab"));
         ;
     }
 
