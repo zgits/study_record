@@ -48,7 +48,7 @@ public class KMP {
 
     public static void main(String[] args) {
         KMP kmp = new KMP();
-        System.out.println(kmp.KMP("cdacdd", "ababa111bcdacddababab"));
+        System.out.println(kmp.KMP("cdd", "ababa111bcdacddababab"));
         ;
     }
 
