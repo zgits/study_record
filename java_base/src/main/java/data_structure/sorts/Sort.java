@@ -5,6 +5,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.Random;
+import java.util.stream.IntStream;
 
 /**
  * @author
@@ -413,6 +414,7 @@ public class Sort {
                 if (method.getParameterTypes().length == 1 && method.getParameterTypes()[0] .isAssignableFrom(int[].class)) {
                     Name desc = method.getAnnotation(Name.class);
                     String sortDesc = desc.name();
+                    //IntStream.range(10,12);
                     int[] arr = new Random().ints(10, 100).limit(5).toArray();
                     int[] arr2 = Arrays.copyOf(arr, arr.length);
                     Arrays.sort(arr2);

@@ -5,7 +5,7 @@ import org.openjdk.jol.info.ClassLayout;
 /**
  * @author
  * @date 2021年10月06日 22:54
- * @description
+ * @description 查看java对象头信息
  */
 public class ShowHeader {
 
