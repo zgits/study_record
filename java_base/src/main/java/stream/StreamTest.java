@@ -34,6 +34,9 @@ public class StreamTest {
 
         features.sort(Comparator.comparing(Demo::getAge).thenComparing(Demo::getName));
 
+
+        System.out.println(features.stream().map(Demo::getName).reduce( (a, b) -> a.concat("; " + b)).get());
+        System.out.println(features.stream().map(Demo::getName).collect(Collectors.joining("; ")));
     }
 
 
